@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.decorators import login_required
 
 def home(request):
     return render(request, 'home.html')
@@ -66,7 +67,14 @@ def Login(request):
         else:
             login(request, user)
             return redirect('tasks')
-        
-        
+
+
+@login_required      
 def tasks(request):
     return render(request, 'tasks.html')
+
+
+@login_required
+def sair(request):
+    logout(request)
+    return redirect('home')

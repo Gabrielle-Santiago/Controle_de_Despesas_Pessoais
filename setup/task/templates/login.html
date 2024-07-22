@@ -10,9 +10,7 @@
 
             <form method="POST" class="card card-body">
 
-                {% if error %}
-                        <div class="alert alert-danger">{{ error }}</div>
-                    {% endif %}
+                {{ error }}
 
                 {% csrf_token %}
 
