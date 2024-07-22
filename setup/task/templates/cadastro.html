@@ -9,7 +9,9 @@
 
                 <form method="POST" class="card card-body">
 
-                    {{ error }}
+                    {% if error %}
+                        <div class="alert alert-danger">{{ error }}</div>
+                    {% endif %}
 
                     {% csrf_token %}
 
@@ -17,17 +19,17 @@
 
                     <div class="mb-3">
                         <label for="username" class="form-label">Nome</label>
-                        <input type="text" class="form-control" id="username" placeholder="Digite seu nome aqui" required>
+                        <input type="text" class="form-control" id="username" name="username" placeholder="Digite seu nome aqui" required>
                     </div>
 
                     <div class="mb-3">
                         <label for="last_name" class="form-label">Sobrenome</label>
-                        <input type="text" class="form-control" id="last_name"  placeholder="Digite seu sobrenome aqui" required>
+                        <input type="text" class="form-control" name="last_name" id="last_name"  placeholder="Digite seu sobrenome aqui" required>
                     </div>
 
                     <div class="mb-3">
                     <label for="email" class="form-label">Endereço de Email</label>
-                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp"  placeholder="Digite seu Email" required>
+                    <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp"  placeholder="Digite seu Email" required>
                     <div id="emailHelp" class="form-text">Nunca compartilharemos seu e-mail com mais ninguém.</div>
                     </div>
 
