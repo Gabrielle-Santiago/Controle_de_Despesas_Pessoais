@@ -1,3 +1,4 @@
+from django.db import IntegrityError
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
@@ -27,9 +28,9 @@ def cadastro(request):
                 user.save()
 
                 login(request, user)
-                return redirect('home')
+                return redirect('login')
 
-            except User.DoesNotExist:
+            except IntegrityError:
                 return render(request, 'cadastro.html',
                               {
                               'form': UserCreationForm(),
@@ -54,7 +55,7 @@ def Login(request):
     else:
         user = authenticate(
 
-        request, email=request.POST['email'], password=request.POST['password'])
+        request, username=request.POST['username'], password=request.POST['password'])
 
         if user is None:
             return render(request, 'login.html', {

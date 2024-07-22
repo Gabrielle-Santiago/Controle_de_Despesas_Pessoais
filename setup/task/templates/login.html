@@ -10,12 +10,17 @@
 
             <form method="POST" class="card card-body">
 
+                {% if error %}
+                        <div class="alert alert-danger">{{ error }}</div>
+                    {% endif %}
+
+                {% csrf_token %}
+
                 <h1 class="text-center">Login</h1>
 
                 <div class="mb-3">
-                <label for="email" class="form-label">Endereço de Email</label>
-                <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp"  placeholder="Digite seu Email" required>
-                <div id="emailHelp" class="form-text">Nunca compartilharemos seu e-mail com mais ninguém.</div>
+                    <label for="username" class="form-label">Nome</label>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Digite seu nome aqui" required>
                 </div>
 
                 <div class="mb-3">
@@ -29,4 +34,3 @@
     </main>
 
 {% endblock %}
-</html>
