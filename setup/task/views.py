@@ -76,9 +76,16 @@ def perg_freq(request):
     return render(request, 'auth/perg_freq.html')
 
 
-@login_required      
-def tasks(request):
-    return render(request, 'tasks.html')
+@login_required
+# Tarefas refere-se ao cadastro das depesas    
+def tarefa_despesa(request):
+    return render(request, 'main/tarefa_despesa.html')
+
+
+@login_required
+# Refere-se ao cadastro da renda pessoal   
+def tarefa_renda(request):
+    return render(request, 'main/tarefa_renda.html')
 
 
 @login_required

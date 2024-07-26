@@ -1,0 +1,39 @@
+{% extends 'menu.html' %}
+
+{% block content %}
+    <title>Tarefas</title>
+
+    <main class="container mt-5">
+
+        <div class="col-md-5 offset-md-3">
+            
+            <form method="POST" class="card card-body">
+
+                {{ error }}
+        
+                {% csrf_token %}
+        
+                <h1 class="text-center">Cadastrar Renda</h1>
+        
+                    <div class="form-group">
+                        <label for="moneyInput">Valor (R$)</label>
+                        <input class="form-control" type="text" id="moneyInput" aria-label="input money example" placeholder="Adicione o valor da despesa" required>
+                    </div> 
+
+                    <div class="form-group">
+                        <label for="dateInput">Data</label>
+                        <input class="form-control" type="date" id="dateInput" aria-label="Adicione uma data" required>
+                    </div>             
+        
+                    <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">Descrição (Opcional)</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Escreva a origem da renda, exemplo: salário, renda extra, comissão..."></textarea>
+                    </div>
+
+                  <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
+        </div>
+    </main>
+    
+
+{% endblock %}
