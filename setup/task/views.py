@@ -4,6 +4,15 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
+from django import forms
+from .forms import RendaForm
+from .models import Renda
+
+class RendaForm(forms.ModelForm):
+    class Meta:
+        model = Renda
+        fields = ['valor', 'data']
+
 
 def home(request):
     return render(request, 'main/home.html')
@@ -68,6 +77,7 @@ def Login(request):
             login(request, user)
             return redirect('main/despesas')
 
+
 def esqueci_senha(request):
     return render(request, 'auth/esqueci_senha.html')
 
@@ -76,16 +86,30 @@ def perg_freq(request):
     return render(request, 'auth/perg_freq.html')
 
 
-@login_required
-# Tarefas refere-se ao cadastro das depesas    
+# Tarefas refere-se ao cadastro das depesas 
+@login_required   
 def tarefa_despesa(request):
     return render(request, 'main/tarefa_despesa.html')
 
 
-@login_required
-# Refere-se ao cadastro da renda pessoal   
+# Refere-se ao cadastro da renda pessoal  
+@login_required 
 def tarefa_renda(request):
-    return render(request, 'main/tarefa_renda.html')
+    if request.method == 'POST':
+        form = RendaForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            return redirect('despesas')
+        else:
+            return render(request, 'main/tarefa_renda.html', {
+                'form': form,
+                'error': 'Dados inválidos!'
+            })
+    else:
+        form = RendaForm()
+
+    return render(request, 'main/tarefa_renda.html', {'form': form})
 
 
 @login_required
