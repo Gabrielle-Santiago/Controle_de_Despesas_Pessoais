@@ -5,8 +5,8 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django import forms
-from .forms import RendaForm
-from .models import Renda
+from .forms import RendaForm, DespesaForm
+from .models import Renda, Despesa
 
 class RendaForm(forms.ModelForm):
     class Meta:
@@ -89,7 +89,21 @@ def perg_freq(request):
 # Tarefas refere-se ao cadastro das depesas 
 @login_required   
 def tarefa_despesa(request):
-    return render(request, 'main/tarefa_despesa.html')
+    if request.method == 'POST':
+        form = DespesaForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            return redirect('despesas')
+        else:
+            return render(request, 'main/tarefa_despesa.html', {
+                'form': form,
+                'error': 'Dados inválidos!'
+            })
+    else:
+        form = DespesaForm()
+
+    return render(request, 'main/tarefa_despesa.html', {'form': form})
 
 
 # Refere-se ao cadastro da renda pessoal  
