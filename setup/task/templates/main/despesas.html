@@ -1,7 +1,31 @@
 {% extends 'menu.html' %}
 
-{% block content %}
-    <title>Despesas Pessoais</title>
+{% load static %}
 
-    <h1>Despesas Pessoais</h1>
+{% block content %}
+    
+    <title>Despesas Pessoais</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <div class="container">
+
+        <div class="row">
+            <div class="top">Renda</div>
+            <div class="top">Total de Gastos</div>
+            <div class="top">Saldo Final</div>
+            <div class="top">Resultado Positivo/Negativo</div>
+        </div>
+
+        <div class="row">
+            <div class="grad">Evolução Patrimonial</div>
+            <div class="grad-min">Resumo</div>
+        </div>
+
+        <div class="row">
+            <div class="grad-min" id="consert">Distribuição de Gastos</div>
+            <div class="grad" id="consert">Evolução Mensal</div>
+        </div>
+        
+    </div>
+    
 {% endblock %}
