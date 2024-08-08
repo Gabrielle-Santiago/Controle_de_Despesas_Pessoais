@@ -1,0 +1,54 @@
+/* Reset de margem e padding */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilização das caixas .top e .grad */
+.top, .grad, .grad-min {
+    background-color: rgba(217, 217, 217, 1);
+    border-radius: 8%;
+    box-shadow: 5px 5px 15px #525252;
+    margin: 1rem;
+    padding: 1rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Dimensões padrão */
+.top {
+    flex: 1 1 200px; /* Ajustado para ser mais flexível e caber na mesma linha */
+    height: 5rem;
+}
+
+.grad {
+    flex: 1 1 600px;
+    height: 15rem;
+}
+
+.grad-min {
+    flex: 1 1 400px;
+    height: 15rem;
+}
+
+/* Ajustes de margem para a última linha */
+#consert {
+    margin-top: 1rem;
+}
+
+/* Layout geral */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+}
+
