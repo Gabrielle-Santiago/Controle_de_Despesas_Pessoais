@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
+from task.calculations.calculos import calcular_total_despesas
+from task.models import Despesa
 from .forms import RendaForm, DespesaForm
 
 def home(request):
