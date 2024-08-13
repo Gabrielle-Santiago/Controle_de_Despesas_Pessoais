@@ -100,6 +100,17 @@ def tarefa_despesa(request):
     return render(request, 'main/tarefa_despesa.html', {'form': form})
 
 
+# Retorno do BD para visualizar
+def visualizar_despesas(request):
+    despesas = Despesa.objects.all()
+    print(despesas)
+    total_despesas = calcular_total_despesas(despesas)
+    return render(request, 'main/despesas_home.html', {
+        'despesas': despesas,
+        'total_despesas': total_despesas,
+    })
+
+
 # Refere-se ao cadastro da renda pessoal  
 @login_required 
 def tarefa_renda(request):

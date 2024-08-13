@@ -14,6 +14,12 @@
 
             <div class="top">
                 <p>Total de Gastos</p>
+                
+                <ul>
+                    {% for despesa in despesas %}
+                        <li>R$ {{ despesa.valor }}</li>
+                    {% endfor %}
+                </ul>
 
             </div>
             <div class="top">Saldo Final</div>
